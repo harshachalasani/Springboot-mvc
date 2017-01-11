@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="employeeRegistration">
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+		<script type="text/javascript" src="/js/employeeRegistrtion.js"></script>
+		<link rel="stylesheet" href="/css/site.css" type="text/css"/>
+		<link rel="stylesheet" href="/css/bootstrap.css" type="text/css"/>
+	</head>
+	<body ng-controller="EmpRegistrationController">
+		<h1> Registration Form</h1>
+		<form name= "myForm" class="form-horizontal registrationForm">
+		<div class="form-group">
+			<label class="col-sm-2"> User Name  </label>
+			<div class="col-sm-4 ">
+				<input type="text" name="userName" class="form-control" ng-model="employee.userName" required />
+			</div>
+			<div class ="error" ng-show="myForm.$submitted || myForm.userName.$touched">
+				<span class="col-sm-5" ng-show="myForm.userName.$error.required"> Username is required field</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2"> First Name  </label>
+			<div class="col-sm-4 ">
+				<input type="text" name="firstName" class="form-control" ng-model="employee.firstName" required/>
+			</div>
+			<div class ="error" ng-show="myForm.$submitted || myForm.firstName.$touched">
+				<span class="col-sm-5" ng-show="myForm.firstName.$error.required"> Firstname is required field</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2"> Last Name </label>
+			<div class="col-sm-4 ">
+				<input type="text" name="lastName" class="form-control" ng-model="employee.lastName" required/>
+			</div>
+			<div class ="error" ng-show="myForm.$submitted || myForm.lastName.$touched">
+				<span class="col-sm-5" ng-show="myForm.lastName.$error.required"> Lastname is required field</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2"> Gender </label>
+			<div class="col-sm-4">
+				<label class="radio-inline">
+					<input type="radio" name="gender" ng-model="employee.gender" value="male"/> Male
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="gender" ng-model="employee.gender" value="female"/> Female
+				</label>
+			</div>
+			
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2"> Email </label>
+			<div class="col-sm-4">
+				<input type="email" name="email" class="form-control" ng-model="employee.email" required/>
+			</div>
+			<div class ="error" ng-show="myForm.$submitted || myForm.email.$touched">
+				<span class="col-sm-5" ng-show="myForm.email.$error.required"> email is required field</span>
+				<span class="col-sm-5" ng-show="myForm.email.$invalid"> email in not valid</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2"> Phone Number </label>
+			<div class="col-sm-4">
+				<input type="text" name="phoneNumber" class="form-control" ng-model="employee.phoneNumber" required ng-maxlength="10"/>
+			</div>
+			<div class ="error" ng-show="myForm.$submitted || myForm.phoneNumber.$touched">
+				<span class="col-sm-5" ng-show="myForm.phoneNumber.$error.required"> phoneNumber is required field</span>
+				<span class="col-sm-5" ng-show="myForm.phoneNumber.$error.maxlength"> phoneNumber should be only 10 digits</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<input class="btn btn-primary" ng-click="addEmployee(employee)" type="submit" value="Register">
+		</div>
+		<div>
+			<label>userName :{{employee.userName}}</label><br>
+			<label>firstName :{{employee.firstName}}</label><br>
+			<label>last Name :{{employee.lastName}}</label><br>
+			{{employee}}
+		</div>
+		</form>
+	</body>
+</html>
